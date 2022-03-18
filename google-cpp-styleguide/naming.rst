@@ -48,19 +48,19 @@
 
 可接受的文件命名示例:
 
-* ``my_useful_class.cc``
+* ``my_useful_class.c``
 
-* ``my-useful-class.cc``
+* ``my-useful-class.c``
 
-* ``myusefulclass.cc``
+* ``myusefulclass.c``
 
-* ``myusefulclass_test.cc`` // ``_unittest`` 和 ``_regtest`` 已弃用.
+* ``myusefulclass_test.c`` // ``_unittest`` 和 ``_regtest`` 已弃用.
 
-C++ 文件要以 ``.cc`` 结尾, 头文件以 ``.h`` 结尾. 专门插入文本的文件则以 ``.inc`` 结尾, 参见 :ref:`头文件自足 <self-contained-headers>`.
+C++ 文件要以 ``.c`` 结尾, 头文件以 ``.h`` 结尾. 参见 :ref:`头文件自足 <self-contained-headers>`.
 
 不要使用已经存在于 ``/usr/include`` 下的文件名 (Yang.Y 注: 即编译器搜索系统头文件的路径), 如 ``db.h``.
 
-通常应尽量让文件名更加明确. ``http_server_logs.h`` 就比 ``logs.h`` 要好. 定义类时文件名一般成对出现, 如 ``foo_bar.h`` 和 ``foo_bar.cc``, 对应于类 ``FooBar``.
+通常应尽量让文件名更加明确. ``http_server_logs.h`` 就比 ``logs.h`` 要好. 定义类时文件名一般成对出现, 如 ``foo_bar.h`` 和 ``foo_bar.c``, 对应于类 ``FooBar``.
 
 内联函数必须放在 ``.h`` 文件中. 如果内联函数比较短, 就直接放在 ``.h`` 中.
 
@@ -79,16 +79,11 @@ C++ 文件要以 ``.cc`` 结尾, 头文件以 ``.h`` 结尾. 专门插入文本�
 
 .. code-block:: c++
 
-    // 类和结构体
-    class UrlTable { ...
-    class UrlTableTester { ...
+    // 结构体
     struct UrlTableProperties { ...
 
     // 类型定义
     typedef hash_map<UrlTableProperties *, string> PropertiesMap;
-
-    // using 别名
-    using PropertiesMap = hash_map<UrlTableProperties *, string>;
 
     // 枚举
     enum UrlTableErrors { ...
@@ -116,21 +111,6 @@ C++ 文件要以 ``.cc`` 结尾, 头文件以 ``.h`` 结尾. 专门插入文本�
 
     string tableName;  // 差 - 混合大小写
 
-类数据成员
-=============================
-
-不管是静态的还是非静态的, 类数据成员都可以和普通变量一样, 但要接下划线.
-
-.. code-block:: c++
-
-    class TableInfo {
-      ...
-     private:
-      string table_name_;  // 好 - 后加下划线.
-      string tablename_;   // 好.
-      static Pool<TableInfo>* pool_;  // 好.
-    };
-
 结构体变量
 =============================
 
@@ -141,7 +121,6 @@ C++ 文件要以 ``.cc`` 结尾, 头文件以 ``.h`` 结尾. 专门插入文本�
     struct UrlTableProperties {
       string name;
       int num_entries;
-      static Pool<UrlTableProperties>* pool;
     };
 
 结构体与类的使用讨论, 参考 :ref:`结构体 vs. 类 <structs-vs-classes>`.
@@ -153,7 +132,7 @@ C++ 文件要以 ``.cc`` 结尾, 头文件以 ``.h`` 结尾. 专门插入文本�
 
 **总述**
 
-声明为 ``constexpr`` 或 ``const`` 的变量, 或在程序运行期间其值始终保持不变的, 命名时以 "k" 开头, 大小写混合. 例如:
+声明为 ``const`` 的变量, 或在程序运行期间其值始终保持不变的, 命名时以 "k" 开头, 大小写混合. 例如:
 
 .. code-block:: c++
 
@@ -188,18 +167,6 @@ C++ 文件要以 ``.cc`` 结尾, 头文件以 ``.h`` 结尾. 专门插入文本�
 
 7.7. 命名空间命名
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-**总述**
-
-命名空间以小写字母命名. 最高级命名空间的名字取决于项目名称. 要注意避免嵌套命名空间的名字之间和常见的顶级命名空间的名字之间发生冲突.
-
-顶级命名空间的名称应当是项目名或者是该命名空间中的代码所属的团队的名字. 命名空间中的代码, 应当存放于和命名空间的名字匹配的文件夹或其子文件夹中.
-
-注意 :ref:`不使用缩写作为名称 <general-naming-rules>` 的规则同样适用于命名空间. 命名空间中的代码极少需要涉及命名空间的名称, 因此没有必要在命名空间中使用缩写.
-
-要避免嵌套的命名空间与常见的顶级命名空间发生名称冲突. 由于名称查找规则的存在, 命名空间之间的冲突完全有可能导致编译失败. 尤其是, 不要创建嵌套的 ``std`` 命名空间. 建议使用更独特的项目标识符 (``websearch::index``, ``websearch::index_util``) 而非常见的极易发生冲突的名称 (比如 ``websearch::util``).
-
-对于 ``internal`` 命名空间, 要当心加入到同一 ``internal`` 命名空间的代码之间发生冲突 (由于内部维护人员通常来自同一团队, 因此常有可能导致冲突). 在这种情况下, 请使用文件名以使得内部名称独一无二 (例如对于 ``frobber.h``, 使用 ``websearch::index::frobber_internal``).
 
 7.8. 枚举命名
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -247,22 +214,3 @@ C++ 文件要以 ``.cc`` 结尾, 头文件以 ``.h`` 结尾. 专门插入文本�
 
 7.10. 命名规则的特例
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-**总述**
-
-如果你命名的实体与已有 C/C++ 实体相似, 可参考现有命名策略.
-
-``bigopen()``: 函数名, 参照 ``open()`` 的形式
-
-``uint``: ``typedef``
-
-``bigpos``: ``struct`` 或 ``class``, 参照 ``pos`` 的形式
-
-``sparse_hash_map``: STL 型实体; 参照 STL 命名约定
-
-``LONGLONG_MAX``: 常量, 如同 ``INT_MAX``
-
-译者（acgtyrant）笔记
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-#. 感觉 Google 的命名约定很高明, 比如写了简单的类 QueryResult, 接着又可以直接定义一个变量 query_result, 区分度很好; 再次, 类内变量以下划线结尾, 那么就可以直接传入同名的形参, 比如 ``TextQuery::TextQuery(std::string word) : word_(word) {}`` , 其中 ``word_`` 自然是类内私有成员. 

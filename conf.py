@@ -3,7 +3,7 @@
 
 
 import sys, os
-project = u'Google 开源项目风格指南'
+project = u'长城编程风格指南(借用Google)'
 copyright = u''
 version = u''
 release = u''
@@ -26,7 +26,7 @@ if not on_rtd:  # only import and set the theme if we're building docs locally
 
 # otherwise, readthedocs.org uses their theme by default, so no need to specify it
 
-html_title = u'Google 开源项目风格指南'
+html_title = u'长城编程风格指南(借用Google)'
 htmlhelp_basename = 'zh-google-styleguide'
 html_add_permalinks = ''
 
@@ -65,7 +65,7 @@ else:
         'preamble' : r'''        \usepackage{ctex}        ''',
     }
 latex_documents = [
-  ('contents', 'zh-google-styleguide.tex', u'Google 开源项目风格指南',
+  ('contents', 'zh-google-styleguide.tex', u'长城编程风格指南(借用Google)',
    u'', 'manual'),
 ]
 
@@ -74,7 +74,7 @@ latex_documents = [
 context = {
     'MEDIA_URL': "/media/",
     'slug': 'google-styleguide',
-    'name': u'Google 开源项目风格指南',
+    'name': u'长城编程风格指南(借用Google)',
     'analytics_code': 'None',
 }
 

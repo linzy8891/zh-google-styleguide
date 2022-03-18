@@ -1,12 +1,5 @@
 Google 开源项目风格指南——中文版
 ================================
-
-* ReadTheDocs 托管地址： `在线阅读最新版本 <https://zh-google-styleguide.readthedocs.io/en/latest/>`_
-
-* GitHub 托管地址： `zh-google-styleguide <https://github.com/zh-google-styleguide/zh-google-styleguide>`_
-
-* 离线文档下载地址： `release <https://github.com/zh-google-styleguide/zh-google-styleguide/releases>`_
-
 .. note:: 
 
     **声明**
