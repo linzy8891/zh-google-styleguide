@@ -9,7 +9,6 @@ C 风格指南 - 内容目录
     :backlinks: none
 
 .. toctree::
-
    index
    headers
    scoping
