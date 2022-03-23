@@ -8,7 +8,7 @@ Greatwall编程风格指南(V0.1)
 
     如果你关注的是 Google 官方英文版，请移步 `Google Style Guide <https://github.com/google/styleguide>`_ 。
 
-    请访问<https://greatwall-styleguide.readthedocs.io/zh_CN/latest/google-cpp-styleguide/contents.html> 获取最新的更新。
+    请访问<https://greatwall-styleguide.readthedocs.io/zh_CN/latest/index.html> 获取最新的更新。
 
 每个较大的开源项目都有自己的风格指南：关于如何为该项目编写代码的一系列约定（有时候会比较武断）。当所有代码均保持一致的风格，在理解大型代码库时更为轻松。
 
